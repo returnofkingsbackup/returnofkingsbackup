@@ -1,0 +1,166 @@
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+.social-share-container{
+display:none;
+}
+#cb-author-box{
+background-color:rgba(0,0,0,0.1);
+font-style: italic;
+padding: 10px; 
+}
+#cb-author-box img{
+display:none;
+}
+body{margin:40px
+auto;max-width:650px;line-height:1.6;font-size:18px;color:#444;padding:0
+10px}h1,h2,h3{line-height:1.2}
+</style>
+</head>
+<body>
+<a href="../index.html">&lt; &lt; &lt; Back</a>
+<h1>How To Maintain Your Online Anonymity Using Advanced Techniques &#8211; Return Of Kings</h1>
+
+<div id="cb-author-box" class="cb-post-footer-block cb-post-block-bg clearfix">
+<div class="cb-mask"><a href="http://www.returnofkings.com/author/itguy"><img alt="" src="../2.gravatar.com/avatar/b375e428eeda189b26335889c9486d16%3Fs=100&amp;d=wavatar&amp;r=r" srcset="../2.gravatar.com/avatar/b375e428eeda189b26335889c9486d16%3Fs=200&amp;d=wavatar&amp;r=rr&amp;r=r 2x" class="avatar avatar-100 photo" height="100" width="100"></a></div>
+<div class="cb-meta">
+<div class="cb-title cb-font-header"><a href="http://www.returnofkings.com/author/itguy"><span>August Moliere</span></a></div>
+<p class="cb-author-bio">August Moliere is an IT guy using his skills to help fellow masculine men. In his free time he enjoys european culture and decries rootless cosmopolitanism.</p>
+</div>
+</div>
+<div class="social-share-container">
+<ul>
+<li><a href="JavaScript:newPopup('http://www.facebook.com/sharer.php?u=http://www.returnofkings.com/102775/how-to-maintain-your-online-anonymity-using-advanced-techniques');" class="fb-share"><img src="img/fb-share.PNG" alt="Facebook"></a></li>
+<li><a href="JavaScript:newPopup('http://twitter.com/share?url=http://www.returnofkings.com/102775/how-to-maintain-your-online-anonymity-using-advanced-techniques&amp;text=How%20To%20Maintain%20Your%20Online%20Anonymity%20Using%20Advanced%20Techniques&amp;via=returnofkings');" class="twitter-share"><img src="img/twitter-share.PNG" alt="Twitter"></a></li>
+</ul>
+<div class="clear"></div>
+</div>
+<p>In <a href="http://www.returnofkings.com/80979/12-ways-to-increase-your-anonymity-and-security-online">a previous article</a> I discussed the possibilities of increasing your safety online by using measures such as encryption, VPN and Tor. Nonetheless I did not cover all possibilities and most importantly it was a practical discussion rather than a theoretical one. This article will be a theoretical dissection of online anonymity tools and their weaknesses.</p>
+<p>Why do people get caught despite using Tor? Can anyone be truly anonymous online ?</p>
+<p>This article will be a summary of the work of Tom Ritter, presented at DEFCON 21, the annual hacker conference. His video presentation can be viewed <a href="https://www.youtube.com/watch?v=_Tj6c2Ikq_E">here</a> and the printed version of his article <a href="https://ritter.vg/p/AAM-defcon13.pdf">here</a>.</p>
+<p>While doing a great Job, Tom’s work is heavy on tech jargon and might confuse laymen. So I will summarize his work and explain the strengths and weaknesses of modern anonymity tools. His work was published in 2013, but remains relevant today as well.</p>
+<p>In his work Tom talks about 4 anonymity technologies :<strong> SSL</strong>, <strong>Tor</strong>, <strong>Remailers</strong> and <strong>Shared Mailboxes. </strong>Let’s discuss them one by one.</p>
+<h3>SSL</h3>
+<p><img class="alignnone wp-image-102859" src="wp-content/uploads/2016/11/ssl-300x134.png" alt="ssl" width="500" height="223" srcset="wp-content/uploads/2016/11/ssl-300x134.png 300w, wp-content/uploads/2016/11/ssl-262x117.png 262w, wp-content/uploads/2016/11/ssl.png 519w" sizes="(max-width: 500px) 100vw, 500px"></p>
+<p><strong>SSL</strong> stands for <strong>Secure Socket Layer</strong> and is a common online security standard used by the likes of Facebook and other major websites. The way SSL works is that it creates an encrypted tunnel of communication between 2 parties so that third parties cannot read the messages they are sending to each other. Despite being secure on paper, it can be circumvented rather easily. To understand how, first we must talk about metadata.</p>
+<h4><strong>Metadata</strong></h4>
+<p>Metadata is data that describes other data. For example, library cards which hold the name of the book, its publishing date and its location in the library is a form of metadata. Metadata is also used in IT.</p>
+<p>An example of metadata is the EXIF file in photos. When you take a photo with a camera you not only register the photo, but usually your device also adds extra info such as the date the photo was taken, the GPS location, phone brand, etc. and stores it in the photo file.</p>
+<p><img class="alignnone wp-image-102809 size-full" src="wp-content/uploads/2016/11/exif_model_pmd.gif" alt="exif_model_pmd" width="500" height="298"></p>
+<p>Other form of metadata is not registered but can be inferred. For example, someone created a program that can discover which parts of Google maps you are looking at based on the size of map tiles you are downloading.</p>
+<p><img class="alignnone wp-image-102812" src="wp-content/uploads/2016/11/map-size-300x225.png" alt="map-size" width="500" height="375" srcset="wp-content/uploads/2016/11/map-size-300x225.png 300w, wp-content/uploads/2016/11/map-size-768x576.png 768w, wp-content/uploads/2016/11/map-size-837x628.png 837w, wp-content/uploads/2016/11/map-size-667x500.png 667w, wp-content/uploads/2016/11/map-size-262x196.png 262w, wp-content/uploads/2016/11/map-size-574x430.png 574w, wp-content/uploads/2016/11/map-size.png 999w" sizes="(max-width: 500px) 100vw, 500px"></p>
+<p>When you are using SSL you are unwillingly lending third parties metadata which can lead to your discovery, particularly the time the message was sent and the size of your messages.</p>
+<p>This allows for attackers to do something called a <strong>correlation attack</strong>.</p>
+<p>Correlation attacks are primarily of 2 types :<strong> Time-based attacks</strong> and <strong>Size-based attacks</strong></p>
+<h4><strong>Time-based attack</strong></h4>
+<p>In order to perform a time-based attack a party sends a message in an encrypted stream, then it looks at who receives the message. Since SSL communication is instantaneous, you can easily infer who is behind the SSL stream. The third party sends a message at 15:59 and whoever happens to get the message right afterwards must be the person they are looking for.</p>
+<p><img class="alignnone wp-image-102813" src="wp-content/uploads/2016/11/time-attack-300x225.png" alt="time-attack" width="500" height="375" srcset="wp-content/uploads/2016/11/time-attack-300x225.png 300w, wp-content/uploads/2016/11/time-attack-768x576.png 768w, wp-content/uploads/2016/11/time-attack-837x628.png 837w, wp-content/uploads/2016/11/time-attack-667x500.png 667w, wp-content/uploads/2016/11/time-attack-262x196.png 262w, wp-content/uploads/2016/11/time-attack-574x430.png 574w, wp-content/uploads/2016/11/time-attack.png 999w" sizes="(max-width: 500px) 100vw, 500px"></p>
+<p>This type of attack was used against the person who dumped Stratfor mailpools. The way it worked is that government analyzed the time he was logging in on the internet and noticed it coincided with the time the person they suspected logged on to a secret chat through Tor. Not only that, rumor has it the government cut electricity to his house at a certain hour and noticed that the user of the secret chat logged out at the same time. The coincidences were too much, so he got caught.</p>
+<h4><strong>Size-based attack</strong></h4>
+<p>In order to perform a size-based attack, the third party sends a file of an unusual size, and then whoever receives the file must be the person they are looking for. Since most people on Facebook send small messages to each other, one only needs to send a very large message and see who happens to receive a message of that size afterwards.</p>
+<p><img class="alignnone wp-image-102816" src="wp-content/uploads/2016/11/size-attack-300x225.png" alt="size-attack" width="500" height="375" srcset="wp-content/uploads/2016/11/size-attack-300x225.png 300w, wp-content/uploads/2016/11/size-attack-768x576.png 768w, wp-content/uploads/2016/11/size-attack-837x628.png 837w, wp-content/uploads/2016/11/size-attack-667x500.png 667w, wp-content/uploads/2016/11/size-attack-262x196.png 262w, wp-content/uploads/2016/11/size-attack-574x430.png 574w, wp-content/uploads/2016/11/size-attack.png 999w" sizes="(max-width: 500px) 100vw, 500px"></p>
+<p>As you can see correlation attacks render you vulnerable if you use SSL as your only line of defense. The reason is because the Third Party can not see <strong>WHAT</strong> you are sending, but they know that you <strong>ARE</strong> sending something,<strong> WHEN</strong> you do it and <strong>HOW BIG</strong> is the file.</p>
+<p><img class="alignnone wp-image-102819" src="wp-content/uploads/2016/11/SSL-300x225.png" alt="ssl" width="500" height="375" srcset="wp-content/uploads/2016/11/SSL-300x225.png 300w, wp-content/uploads/2016/11/SSL-768x576.png 768w, wp-content/uploads/2016/11/SSL-837x628.png 837w, wp-content/uploads/2016/11/SSL-667x500.png 667w, wp-content/uploads/2016/11/SSL-262x196.png 262w, wp-content/uploads/2016/11/SSL-574x430.png 574w, wp-content/uploads/2016/11/SSL.png 999w" sizes="(max-width: 500px) 100vw, 500px"></p>
+<p>Ideally they should not even know you are communicating with anything at all. So, let’s see what other technologies have to offer.</p>
+<h3>Tor</h3>
+<p><img class="alignnone wp-image-102823" src="wp-content/uploads/2016/11/Tor-300x225.png" alt="tor" width="500" height="375" srcset="wp-content/uploads/2016/11/Tor-300x225.png 300w, wp-content/uploads/2016/11/Tor-768x576.png 768w, wp-content/uploads/2016/11/Tor-837x628.png 837w, wp-content/uploads/2016/11/Tor-667x500.png 667w, wp-content/uploads/2016/11/Tor-262x196.png 262w, wp-content/uploads/2016/11/Tor-574x430.png 574w, wp-content/uploads/2016/11/Tor.png 999w" sizes="(max-width: 500px) 100vw, 500px"></p>
+<p>Tor is a custom browser based on Firefox with extensions that works on the principle of connecting to a few nodes so that when you look at a website the only thing the website can see is the last node you traveled through and on the opposite side your ISP (Internet Service Provider ) can only see your first node, not the whole route.</p>
+<p>This is already getting better. However it does not add that much anonymity since now third parties do not know <strong>WHO</strong> is communicating, but they can still see that it <strong>DOES</strong> happen, <strong>WHEN</strong> it happens and <strong>HOW BIG</strong> the size of messages are.</p>
+<p><img class="alignnone wp-image-102827" src="wp-content/uploads/2016/11/Tor-security-300x225.png" alt="tor-security" width="500" height="375" srcset="wp-content/uploads/2016/11/Tor-security-300x225.png 300w, wp-content/uploads/2016/11/Tor-security-768x576.png 768w, wp-content/uploads/2016/11/Tor-security-837x628.png 837w, wp-content/uploads/2016/11/Tor-security-667x500.png 667w, wp-content/uploads/2016/11/Tor-security-262x196.png 262w, wp-content/uploads/2016/11/Tor-security-574x430.png 574w, wp-content/uploads/2016/11/Tor-security.png 999w" sizes="(max-width: 500px) 100vw, 500px"></p>
+<p>Not only that, but there are known vulnerabilities, particularly of 3 types.</p>
+<p><strong>You are viewing a website in the country you are in.</strong></p>
+<p><img class="alignnone wp-image-102828" src="wp-content/uploads/2016/11/tor-attacked-1-300x225.png" alt="tor-attacked-1" width="500" height="375" srcset="wp-content/uploads/2016/11/tor-attacked-1-300x225.png 300w, wp-content/uploads/2016/11/tor-attacked-1-768x576.png 768w, wp-content/uploads/2016/11/tor-attacked-1-837x628.png 837w, wp-content/uploads/2016/11/tor-attacked-1-667x500.png 667w, wp-content/uploads/2016/11/tor-attacked-1-262x196.png 262w, wp-content/uploads/2016/11/tor-attacked-1-574x430.png 574w, wp-content/uploads/2016/11/tor-attacked-1.png 999w" sizes="(max-width: 500px) 100vw, 500px"></p>
+<p>This allows advanced opponents calculate that it was YOU who was using Tor. It is difficult, but not impossible. This is bad news since a lot of people from US view websites stored in US. And so do dissidents from China or Iran.</p>
+<p><strong>Every single node you pass through is compromised</strong></p>
+<p><img class="alignnone wp-image-102829" src="wp-content/uploads/2016/11/tor-attacked-300x225.png" alt="tor-attacked" width="500" height="375" srcset="wp-content/uploads/2016/11/tor-attacked-300x225.png 300w, wp-content/uploads/2016/11/tor-attacked-768x576.png 768w, wp-content/uploads/2016/11/tor-attacked-837x628.png 837w, wp-content/uploads/2016/11/tor-attacked-667x500.png 667w, wp-content/uploads/2016/11/tor-attacked-262x196.png 262w, wp-content/uploads/2016/11/tor-attacked-574x430.png 574w, wp-content/uploads/2016/11/tor-attacked.png 999w" sizes="(max-width: 500px) 100vw, 500px"></p>
+<p>In <a href="http://www.returnofkings.com/80979/12-ways-to-increase-your-anonymity-and-security-online">my previous article</a> I mentioned that the government can set up Tor nodes that they monitor. But to successfully pull an attack they would have to monitor EVERY node you go through.</p>
+<p>This requires NWO level trickery, but again, we already have examples of this happening already with VPN agreements. Countries in the Anglosphere have an agreement to give away information regarding VPN usage by suspects from respective countries. This agreements is called Five Eyes. I wouldn’t be surprised if a similar thing is organized regarding Tor nodes.</p>
+<p><strong>Passive traffic analysis</strong></p>
+<p>Although not mentioned by Ritter in his presentation, it is common knowledge that an opponent with a lot of resources, mostly governments, could analyze the whole network and correlate patterns to discover who is viewing a certain website or communicating with someone.</p>
+<p>To give an analogy, it would be like the police heavily patrolling every single street in a city and every single car , so that even if your car had fake plates they could notice patterns and discover its owner.</p>
+<p>The problem is, this approach can create false positives, with a 10% chance of error, which is why these analyses are not accepted in court as proof. But you can rest sure if such an analysis points to you, you will be put under further investigation and it only gets worse from there.</p>
+<p>So what can be used to further aid us ?</p>
+<h3>Remailers</h3>
+<p><img class="alignnone wp-image-102831" src="wp-content/uploads/2016/11/Remailers-300x225.png" alt="remailers" width="500" height="375" srcset="wp-content/uploads/2016/11/Remailers-300x225.png 300w, wp-content/uploads/2016/11/Remailers-768x576.png 768w, wp-content/uploads/2016/11/Remailers-837x628.png 837w, wp-content/uploads/2016/11/Remailers-667x500.png 667w, wp-content/uploads/2016/11/Remailers-262x196.png 262w, wp-content/uploads/2016/11/Remailers-574x430.png 574w, wp-content/uploads/2016/11/Remailers.png 999w" sizes="(max-width: 500px) 100vw, 500px"></p>
+<p>Remailers are an interesting concept. The way they work is that people pool their mail messages on a server, after which some time passes and all mails are sent simultaneously at the same time.</p>
+<p>This is supposed to protect from Time and Size based correlation attacks.</p>
+<p>The problem here is that it still allows third parties to see that you <strong>ARE</strong> sending a message, <strong>WHEN</strong> you sent it and <strong>HOW BIG</strong> it was. But they can’t see the other end. For the receiver, he has the same problem. Third parties can’t know <strong>WHO</strong> he got the message from, but they can still see <strong>WHEN</strong> he receives it from the remailer and <strong>HOW BIG</strong> it is.</p>
+<p><img class="alignnone wp-image-102838" src="wp-content/uploads/2016/11/mix-networks-300x225.png" alt="mix-networks" width="500" height="375" srcset="wp-content/uploads/2016/11/mix-networks-300x225.png 300w, wp-content/uploads/2016/11/mix-networks-768x576.png 768w, wp-content/uploads/2016/11/mix-networks-837x628.png 837w, wp-content/uploads/2016/11/mix-networks-667x500.png 667w, wp-content/uploads/2016/11/mix-networks-262x196.png 262w, wp-content/uploads/2016/11/mix-networks-574x430.png 574w, wp-content/uploads/2016/11/mix-networks.png 999w" sizes="(max-width: 500px) 100vw, 500px"></p>
+<p>On top of that, for Remailers to work lots of people have to use them at the same time. Otherwise if there are few users, an enemy can still use size-based correlation attacks.</p>
+<p>It’s hard to use size-based attacks when thousands of people are sending messages of various sizes, but if only three people at one time are using a Remailer, then it is very easy to do a size-based attack.</p>
+
+<div style="float: none; margin:20px 0 20px 0; text-align:center;">
+ <div id="M322148ScriptRootC225781"> <div id="M322148PreloadC225781">  </div> <script> (function(){ var D=new Date(),d=document,b='body',ce='createElement',ac='appendChild',st='style',ds='display',n='none',gi='getElementById'; var i=d[ce]('iframe');i[st][ds]=n;d[gi]("M322148ScriptRootC225781")[ac](i);try{var iw=i.contentWindow.document;iw.open();iw.writeln("<ht"+"ml><bo"+"dy>"+"dy>"+"ml>");iw.close();var c=iw[b];} catch(e){var iw=d;var c=d[gi]("M322148ScriptRootC225781");}var dv=iw[ce]('div');dv.id="MG_ID";dv[st][ds]=n;dv.innerHTML=225781;c[ac](dv); var s=iw[ce]('script');s.async='async';s.defer='defer';s.charset='utf-8';s.src="//jsc.mgid.com/r/e/returnofkings.com.225781.js?t="+D.getYear()+D.getMonth()+D.getUTCDate()+D.getUTCHours();c[ac](s);})(); </script> </div> 
+</div>
+<h3>Shared mailbox</h3>
+<p><img class="alignnone wp-image-102839" src="wp-content/uploads/2016/11/SM-300x225.png" alt="sm" width="500" height="375" srcset="wp-content/uploads/2016/11/SM-300x225.png 300w, wp-content/uploads/2016/11/SM-768x576.png 768w, wp-content/uploads/2016/11/SM-837x628.png 837w, wp-content/uploads/2016/11/SM-667x500.png 667w, wp-content/uploads/2016/11/SM-262x196.png 262w, wp-content/uploads/2016/11/SM-574x430.png 574w, wp-content/uploads/2016/11/SM.png 999w" sizes="(max-width: 500px) 100vw, 500px"></p>
+<p>Shared mailboxes are the most out-of-the-box anonymous solution.</p>
+<p>The way a shared mailbox works is that users share a mailbox. They cannot delete messages from it, but can only add encrypted messages to it. And when they want to check if they received a message they download all messages and use their key and try to decrypt the header of all of them and see if any of the messages belong to him.</p>
+<p><img class="alignnone wp-image-102840" src="wp-content/uploads/2016/11/SM-green-300x225.png" alt="sm-green" width="500" height="375" srcset="wp-content/uploads/2016/11/SM-green-300x225.png 300w, wp-content/uploads/2016/11/SM-green-768x576.png 768w, wp-content/uploads/2016/11/SM-green-837x628.png 837w, wp-content/uploads/2016/11/SM-green-667x500.png 667w, wp-content/uploads/2016/11/SM-green-262x196.png 262w, wp-content/uploads/2016/11/SM-green-574x430.png 574w, wp-content/uploads/2016/11/SM-green.png 999w" sizes="(max-width: 500px) 100vw, 500px"></p>
+<p>It is a resource-tedious process, but it offers a great payoff. For the receiver this is great because when he downloads the whole mailbox third parties can’t know if he received a message, maybe he did, or maybe he didn’t. For the sender however, the equation stays the same as before.</p>
+<p><img class="alignnone wp-image-102841" src="wp-content/uploads/2016/11/SM-send-receive-300x225.png" alt="sm-send-receive" width="500" height="375" srcset="wp-content/uploads/2016/11/SM-send-receive-300x225.png 300w, wp-content/uploads/2016/11/SM-send-receive-768x576.png 768w, wp-content/uploads/2016/11/SM-send-receive-837x628.png 837w, wp-content/uploads/2016/11/SM-send-receive-667x500.png 667w, wp-content/uploads/2016/11/SM-send-receive-262x196.png 262w, wp-content/uploads/2016/11/SM-send-receive-574x430.png 574w, wp-content/uploads/2016/11/SM-send-receive.png 999w" sizes="(max-width: 500px) 100vw, 500px"></p>
+<p>This is for the moment the most powerful anonymity solution out there. However it has a few issues. In order to use <em>alt.anonymous.message</em> (the shared inbox) you need to have some degree of technical skill, and user inexperience leads to issues.</p>
+<p>In order to be easier to use <em>alt.anonymous.message</em> allows the use of nymservers. Nymservers act as regular mail addresses, which when sent to, automatically post them to <em>alt.anonymous.message</em> .</p>
+<p><img class="alignnone wp-image-102843" src="wp-content/uploads/2016/11/type-i-nymserv-300x225.png" alt="type-i-nymserv" width="500" height="375" srcset="wp-content/uploads/2016/11/type-i-nymserv-300x225.png 300w, wp-content/uploads/2016/11/type-i-nymserv-768x576.png 768w, wp-content/uploads/2016/11/type-i-nymserv-837x628.png 837w, wp-content/uploads/2016/11/type-i-nymserv-667x500.png 667w, wp-content/uploads/2016/11/type-i-nymserv-262x196.png 262w, wp-content/uploads/2016/11/type-i-nymserv-574x430.png 574w, wp-content/uploads/2016/11/type-i-nymserv.png 999w" sizes="(max-width: 500px) 100vw, 500px"></p>
+<p>There are however issues with AAM and Nymservers.</p>
+<h4>1. Poor network diversity</h4>
+<p>The number one issue is there are currently two main node operators: Zax and Dizzum, which are responsible for the trafficking of messages to <em>alt.anonymous.message</em>. If both were to retire or be arrested it would the death of <em>alt.anonymous.message</em>. As you can see, network diversity is horrible.</p>
+<h4>
+<img class="alignnone wp-image-102848" src="wp-content/uploads/2016/11/Dizum-and-Zax-300x225.png" alt="dizum-and-zax" width="500" height="375" srcset="wp-content/uploads/2016/11/Dizum-and-Zax-300x225.png 300w, wp-content/uploads/2016/11/Dizum-and-Zax-768x576.png 768w, wp-content/uploads/2016/11/Dizum-and-Zax-837x628.png 837w, wp-content/uploads/2016/11/Dizum-and-Zax-667x500.png 667w, wp-content/uploads/2016/11/Dizum-and-Zax-262x196.png 262w, wp-content/uploads/2016/11/Dizum-and-Zax-574x430.png 574w, wp-content/uploads/2016/11/Dizum-and-Zax.png 999w" sizes="(max-width: 500px) 100vw, 500px"><br>
+<em><br>
+</em>2. Poor encryption used on messages</h4>
+<p>Another issue is the type of encryption used. Some messages used the outdated MD5 encryption standard which is easy to crack.</p>
+<p><img class="alignnone wp-image-102849" src="wp-content/uploads/2016/11/md5-300x225.png" alt="md5" width="500" height="375" srcset="wp-content/uploads/2016/11/md5-300x225.png 300w, wp-content/uploads/2016/11/md5-768x576.png 768w, wp-content/uploads/2016/11/md5-837x628.png 837w, wp-content/uploads/2016/11/md5-667x500.png 667w, wp-content/uploads/2016/11/md5-262x196.png 262w, wp-content/uploads/2016/11/md5-574x430.png 574w, wp-content/uploads/2016/11/md5.png 999w" sizes="(max-width: 500px) 100vw, 500px"></p>
+<p>Also, the title of messages are encrypted less strongly in order to be able to determine quickly which belong to you and which don’t. Subjects can be encrypted using either hsubs or esubs. Esubs is an older and stronger standard, but hsubs have grown in popularity in recent years.</p>
+<p><img class="alignnone wp-image-102850" src="wp-content/uploads/2016/11/esubs-and-hsubs-time-300x225.png" alt="esubs-and-hsubs-time" width="500" height="375" srcset="wp-content/uploads/2016/11/esubs-and-hsubs-time-300x225.png 300w, wp-content/uploads/2016/11/esubs-and-hsubs-time-768x576.png 768w, wp-content/uploads/2016/11/esubs-and-hsubs-time-837x628.png 837w, wp-content/uploads/2016/11/esubs-and-hsubs-time-667x500.png 667w, wp-content/uploads/2016/11/esubs-and-hsubs-time-262x196.png 262w, wp-content/uploads/2016/11/esubs-and-hsubs-time-574x430.png 574w, wp-content/uploads/2016/11/esubs-and-hsubs-time.png 999w" sizes="(max-width: 500px) 100vw, 500px"><img class="alignnone wp-image-102851" src="http://www.returnofkings.com/wp-content/uploads/2016/11/esubs-vs-hsubs-300x225.png" alt="esubs-vs-hsubs" width="500" height="375" srcset="http://www.returnofkings.com/wp-content/uploads/2016/11/esubs-vs-hsubs-300x225.png 300w, http://www.returnofkings.com/wp-content/uploads/2016/11/esubs-vs-hsubs-262x197.png 262w, http://www.returnofkings.com/wp-content/uploads/2016/11/esubs-vs-hsubs-574x431.png 574w, wp-content/uploads/2016/11/esubs-vs-hsubs.png 628w" sizes="(max-width: 500px) 100vw, 500px"></p>
+<h4>3. Pattern analysis due to use of same subject line and same remailers</h4>
+<p>A lot of messages use the same subject over and over, people tend to reply to a particular subject. On top of that most people also usually use the same remailer over and over, you can start noticing communication patterns :</p>
+<p><img class="alignnone wp-image-102852" src="wp-content/uploads/2016/11/pattern-300x225.png" alt="pattern" width="615" height="461" srcset="wp-content/uploads/2016/11/pattern-300x225.png 300w, wp-content/uploads/2016/11/pattern-768x576.png 768w, wp-content/uploads/2016/11/pattern-837x628.png 837w, wp-content/uploads/2016/11/pattern-667x500.png 667w, wp-content/uploads/2016/11/pattern-262x196.png 262w, wp-content/uploads/2016/11/pattern-574x430.png 574w, wp-content/uploads/2016/11/pattern.png 999w" sizes="(max-width: 615px) 100vw, 615px"></p>
+<h4>4. Custom Remailer command errors</h4>
+<p>There are different type of remailers. The old school one was called Type 1 and lives on in the protocol of Mixmaster. It allows a lot of customizing options for the header. The users often screwed up the name of the command, which ended in the title of a message.</p>
+<p>For example if you write “X-No-Archive Hello Friend” it would turn into “Hello Friend” and the X-No-archive would be interpreted as a command to not archive. But if you wrote “no-archive-x Hello Friend” you messed up so the title would become “no-archive-x Hello Friend”. If you do this multiple times, you would be identified as a unique user since your titles would all contain “no-archive-x” or uncapitalized “x-no-archive” or whatever other combination of mispelled commands you use.</p>
+<p>Since most people used the same commands over and over and did the same mistakes they became quickly identifiable as unique users.</p>
+<h4>5. Imperfect Remailers</h4>
+<p>There are different types of remailers. Currently there are two types of remailers in use, <strong>MixMaster</strong> and <strong>MixMinion</strong>. MixMinion has certain advantages over MixMaster. But both suffer from certain problems.</p>
+<p><img class="alignnone wp-image-102853" src="wp-content/uploads/2016/11/Remailers-issues-300x225.png" alt="remailers-issues" width="500" height="375" srcset="wp-content/uploads/2016/11/Remailers-issues-300x225.png 300w, wp-content/uploads/2016/11/Remailers-issues-262x197.png 262w, wp-content/uploads/2016/11/Remailers-issues-574x431.png 574w, wp-content/uploads/2016/11/Remailers-issues.png 628w" sizes="(max-width: 500px) 100vw, 500px"></p>
+<h4>6. Nymservers which do not protect from size-based correlation attacks</h4>
+<p>Nymservers themselves have problems. Zax’s Nymserver is instantaneous which allows for size-based correlation attacks. However even Type 1 Nymservers (older ones) which are not always instantaneous still allow for size-based correlation attacks given a bit of perspicacity.</p>
+<p>Therefore we identified main issues with AAM (alt.anonymous.message):</p>
+<p>1) Giving users options allows for segregation and profiling<br>
+2) Some encryption is weak<br>
+3) It can be complicated to use and allows for beginner mistakes<br>
+4) Weak network diversity</p>
+<p>Nonetheless, Ritter identified the most secure way of using AAM :</p>
+<p>1) Use a strong passphrase and hsub<br>
+2) Use Type 3 PGP packet (Key Stretching)<br>
+3) Use Remailers<br>
+4) Do not use extra headers or options</p>
+<p>The issue here is that if you do it properly you will still be part of a small community of people doing so (around 500 – 1500 people), which will make you looks suspicious and will cause the government to look closer into you and maybe add you to a database.</p>
+<h3>Solutions of the future</h3>
+<h4><strong>Pynchon gate</strong></h4>
+<p><em>Pynchon Gate</em> is a project meant to replace shared mailboxes. It uses Private Information Retrieval. It exposes less meta-data, scales better and resists flooding and size-based attacks. However it is currently work in progress</p>
+<p><img class="alignnone wp-image-102845" src="wp-content/uploads/2016/11/pynchon-gate-300x225.png" alt="pynchon-gate" width="500" height="375" srcset="wp-content/uploads/2016/11/pynchon-gate-300x225.png 300w, wp-content/uploads/2016/11/pynchon-gate-768x576.png 768w, wp-content/uploads/2016/11/pynchon-gate-837x628.png 837w, wp-content/uploads/2016/11/pynchon-gate-667x500.png 667w, wp-content/uploads/2016/11/pynchon-gate-262x196.png 262w, wp-content/uploads/2016/11/pynchon-gate-574x430.png 574w, wp-content/uploads/2016/11/pynchon-gate.png 999w" sizes="(max-width: 500px) 100vw, 500px"></p>
+<h4><strong>Improved Remailers</strong></h4>
+<p><em>MixMinion</em> is currently the best remailer protocol and as such should be used as a basis for future improvement. Planned improvements include things such as improving TLS settings and moving to a new packet format.</p>
+<p><img class="alignnone wp-image-102846" src="wp-content/uploads/2016/11/Mixminion-300x225.png" alt="mixminion" width="500" height="375" srcset="wp-content/uploads/2016/11/Mixminion-300x225.png 300w, wp-content/uploads/2016/11/Mixminion-768x576.png 768w, wp-content/uploads/2016/11/Mixminion-837x628.png 837w, wp-content/uploads/2016/11/Mixminion-667x500.png 667w, wp-content/uploads/2016/11/Mixminion-262x196.png 262w, wp-content/uploads/2016/11/Mixminion-574x430.png 574w, wp-content/uploads/2016/11/Mixminion.png 999w" sizes="(max-width: 500px) 100vw, 500px"></p>
+<h3>What is currently lacking</h3>
+<p>As of right now, what is lacking is some tech that could be used to anonymously share large files. AAM and such are low bandwidth, which means it can only be used to share small files like text messages.</p>
+<p>A new service needs to be created to cover this niche. In the words of Tom Ritter :</p>
+<blockquote>
+<p>But what I keep coming back to is the fact that we have no anonymity network that is high bandwidth, high latency. We have no anonymity network that would have let someone securely share the Collateral Murder video, without Wikileaks being their proxy. You can’t take a video of corruption or police brutality, and post it anonymously.</p>
+<p>Now I hear you arguing with me in your heads: Use Tor and upload it to Youtube. No, youtube will take it down. Use Tor and upload it to MEGA, or some site that will fight fradulent takedown notices. Okay, but now you’re relying on the good graces of some third party. A third party that is known to host the video, and can be sued. Wikileaks was the last organization that was willing to take on that legal fight, and now they are no longer in the business of hosting content for normal people.</p>
+<p>And you can say Hidden Service and I’ll point to size-based traffic analysis and confirmation attacks that come with a low-latency network, never mind Ralf-Phillip Weinmen’s amazing work the other month that really killed Hidden Services. We can go on and on like this, but I hope you’ll at least concede the point that what you are coming up with are work-arounds for a problem that we lack a good solution to.</p>
+</blockquote>
+<h3>Conclusions</h3>
+<p>As we can see true anonymity online is non-existent. At the very least, third parties can collect meta-data on you and use correlation attacks, when ideally they shouldn’t even know you are communicating at all. Moreover, even strong anonymity tools like Tor have shown to have known vulnerabilities.</p>
+<p>However, what matters is not whether something is vulnerable in theory, but rather does it keep you safe in practice? And so far, the tools we have at our disposal are pretty powerful.</p>
+<p>As I have mentioned in <a href="http://www.returnofkings.com/80979/12-ways-to-increase-your-anonymity-and-security-online">my previous article</a>, using TailsOS off a flash stick in a public wi-fi area with no cameras + VPN/Tor seems to be the best solution for now.</p>
+<p>The testament to the power of anonymity tools is that pedophile rings and drug dealers have managed to escape persecution by multiple world governments to this day using them.</p>
+<p>And that’s what I will talk about in my next article. We will analyze the electronic operational security of pedophile rings and how one infamous one managed to escape unscathed after years of being searched. Stay tuned.</p>
+<p><strong>Read More: <em><a href="http://www.returnofkings.com/80979/12-ways-to-increase-your-anonymity-and-security-online">12 Ways To Increase Your Anonymity And Security Online</a></em></strong></p>
+<div style="font-size: 0px; height: 0px; line-height: 0px; margin: 0; padding: 0; clear: both;"></div>
+<span id="tve_leads_end_content" style="display: block; visibility: hidden; border: 1px solid transparent;"></span><span style="display:none" class="tl-placeholder-f-type-post_footer"></span><div class="essb_break_scroll"></div>
+
+</body>
+</html>
